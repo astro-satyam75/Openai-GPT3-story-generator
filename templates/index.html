@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <head>
-  <title>OpenAI Quickstart</title>
+  <title>GPT3 Story Generator</title>
   <link
     rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
+    href="{{ url_for('static', filename='story.png') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
-  <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+  <img src="{{ url_for('static', filename='story.png') }}" class="icon" />
+  <h3>Create your Story</h3>
+  <form action="/" method="post" >
+    <input type="text" name="prompt" placeholder="Enter the prompt" required />
+
+    <div class="checkbox-group">
+      <label for="genre">Select a genre:</label>
+      <br>
+      <input type="checkbox" id="genre-fantasy" name="genre" value="fantasy">
+      <label for="genre-fantasy">Fantasy</label>
+      <br>
+      <input type="checkbox" id="genre-sci-fi" name="genre" value="sci-fi">
+      <label for="genre-sci-fi">Sci-Fi</label>
+      <br>
+      <input type="checkbox" id="genre-romance" name="genre" value="romance">
+      <label for="genre-romance">Romance</label>
+      <br>
+      <input type="checkbox" id="genre-mystery" name="genre" value="mystery">
+      <label for="genre-mystery">Mystery</label>
+      <br>
+      <input type="checkbox" id="genre-horror" name="genre" value="horror">
+      <label for="genre-horror">Horror</label>
+      <br>
+    </div>
+    
+    <input type="submit" value="Generate your story" />
   </form>
-  {% if result %}
-  <div class="result">{{ result }}</div>
+
+  {% if title %}
+  <h2>{{ title }}</h2>
+  {% endif %}
+  
+  {% if story %}
+  <div class="story">{{ story }}</div>
   {% endif %}
 </body>
