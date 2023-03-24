@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, Markup
 
 
 app = Flask(__name__)
-openai.api_key = "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"
+openai.api_key = "YOUR_API"
 
 
 @app.route("/", methods=("GET", "POST"))
